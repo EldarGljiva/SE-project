@@ -1,0 +1,56 @@
+<!--Login page content-->
+<form id="loginForm" method="POST">
+  <div
+    class="container d-flex justify-content-center align-items-center min-vh-100"
+  >
+    <div class="row border rounded-5 p-3 bg-light shadow box-area-login">
+      <div class="col-md-12">
+        <div class="row align-items-center">
+          <div class="header-text">
+            <p>Hello, Again</p>
+            <p>We are happy to have you back.</p>
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Email address"
+              id="email"
+              name="email"
+              autocomplete="off"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              id="password"
+              name="password"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="input-group mb-3">
+            <button
+              type="submit"
+              class="btn btn-success w-100 fs-6"
+              id="loginButton"
+            >
+              Login
+            </button>
+          </div>
+          <div class="forgot">
+            <small
+              >Don't have an account?<a href="#register"> Register</a></small
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+  loginService.init();
+</script>

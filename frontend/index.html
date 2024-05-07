@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!--Bootstrap Js-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- toastr css -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css"
+    />
+    <!-- index.css -->
+    <link href="assets/css/index.css" rel="stylesheet" />
+    <!-- menu.css -->
+    <link href="assets/css/menu.css" rel="stylesheet" />
+    <!-- register.css -->
+    <link href="assets/css/login.css" rel="stylesheet" />
+    <!-- login.css -->
+    <link href="assets/css/register.css" rel="stylesheet" />
+    <!-- reservation.css -->
+    <link href="assets/css/reservation.css" rel="stylesheet" />
+    <!-- PlayFair font style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Icons-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <!--Font awesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <!-- spapp.css -->
+    <link rel="stylesheet" href="assets/css/spapp.css" />
+    <title>Chef's Restaurant</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png" />
+  </head>
+  <body>
+    <!-- NavBar -->
+    <nav class="mb-3" role="navigation">
+      <a href="#">
+        <div class="logo">
+          <img
+            src="./assets/images/logo.png"
+            alt="logo"
+            height="50px"
+            width="50px"
+          />
+        </div>
+      </a>
+
+      <div class="openMenu"><i class="fa fa-bars"></i></div>
+      <div class="closeMenu" id="closeMenu"><i class="fa fa-times"></i></div>
+
+      <ul class="mainMenu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Our Menu</a></li>
+        <li><a href="#reservation">Make Reservation</a></li>
+        <li><a href="#aboutUs">About Us</a></li>
+        <!--style="display: none"-->
+        <li id="adminLink" class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="adminDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Admin Dashboard <i class="bi bi-chevron-down"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+            <li>
+              <a class="dropdown-item" href="#adminReservations"
+                >Manage Reservations</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="#adminMenu">Manage Menu Items</a>
+            </li>
+          </ul>
+        </li>
+        <!-- Profile Dropdown -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Profile <i class="bi bi-chevron-down"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="#reservations">Reservations</a>
+            </li>
+            <li id="loginLogoutBtn">
+              <a class="dropdown-item" href="#login">Login</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- main spapp content -->
+    <main id="spapp" role="main">
+      <section id="home" data-load="home.html"></section>
+      <section id="menu" data-load="menu.html"></section>
+      <section id="reservation" data-load="reservation.html"></section>
+      <section id="aboutUs" data-load="aboutUs.html"></section>
+      <section id="reservations" data-load="reservations.html"></section>
+      <section id="login" data-load="login.html"></section>
+      <section id="register" data-load="register.html"></section>
+      <section id="adminMenu" data-load="adminMenu.html"></section>
+      <section
+        id="adminReservations"
+        data-load="adminReservations.html"
+      ></section>
+    </main>
+    <!-- Footer -->
+    <div style="background-color: #ffa500" id="footer">
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-md-6 d-flex align-items-center justify-content-center"
+          >
+            <img
+              src="./assets/images/footer.png"
+              alt="cook"
+              class="img-fluid"
+              style="max-height: 150px; max-width: 100%"
+            />
+          </div>
+          <div class="col-md-6 p-3 d-flex flex-column align-items-start">
+            <p class="mb-0 text-black">Phone: +61 2 1234 5678</p>
+            <p class="mb-0 text-black">
+              Address: 7890 Oak Lane, Sydney, NSW 2000, Australia
+            </p>
+            <p class="mb-0 text-black">Email: info@company.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Jquery Validator-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"
+      integrity="sha512-WMEKGZ7L5LWgaPeJtw9MBM4i5w5OSBlSjTjCtSnvFJGSVD26gE5+Td12qN5pvWXhuWaWcVwF++F7aqu9cvqP0A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- spapp js -->
+    <script src="assets/js/jquery.spapp.js"></script>
+    <script src="assets/js/jquery.spapp.min.js"></script>
+    <!-- spapp -->
+    <script>
+      var app = $.spapp({ defaultView: "#home", templateDir: "pages/" });
+      app.run();
+    </script>
+    <!-- block-ui -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/block-ui@2.70.1/jquery.blockUI.min.js"
+    >
+      /*
+      $('body').block({
+        message: '<div class="spinner-border text-primary" role="status"></div>', // Need to wrap the HTML in quotes
+        css: {
+          backgroundColor: 'transparent',
+          color: '0'
+        },
+        overlayCSS: { // This should be inside the block function, not separate
+          backgroundColor: '#000',
+          opacity: 0.25
+        }3
+      });
+
+       */
+    </script>
+    <!-- toastr js -->
+    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
+    <!-- index.js-->
+    <script src="assets/js/index.js"></script>
+    <!-- menu.js -->
+    <script src="services/menu.js"></script>
+    <!-- login.js -->
+    <script src="services/login.js"></script>
+    <!-- register.js -->
+    <script src="services/register.js"></script>
+    <!-- reservation.js -->
+    <script src="services/reservation.js"></script>
+    <!-- admin.js -->
+    <script src="services/admin.js"></script>
+  </body>
+</html>

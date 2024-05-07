@@ -1,0 +1,68 @@
+<!--Menu page content-->
+<div class="container min-vh-100">
+  <div class="row text-center mt-3 mb-3"><h4>Our Menu</h4></div>
+  <!--Button group-->
+  <div
+    class="btn-toolbar btn-toolbar-custom"
+    role="toolbar"
+    aria-label="Toolbar with button groups"
+  >
+    <div
+      class="row-md-3 row-sm-6 me-2 mb-2"
+      role="group"
+      aria-label="First group"
+    >
+      <button type="button" class="btn btn-success-custom" id="main_courses">
+        Main Courses
+      </button>
+    </div>
+    <div
+      class="row-md-3 row-sm-6 btn-group me-2 mb-2"
+      role="group"
+      aria-label="Second group"
+    >
+      <button type="button" class="btn btn-success-custom" id="side_dishes">
+        Side Dishes
+      </button>
+    </div>
+    <div
+      class="row-md-3 row-sm-6 btn-group me-2 mb-2"
+      role="group"
+      aria-label="Third group"
+    >
+      <button type="button" class="btn btn-success-custom" id="desserts">
+        Desserts
+      </button>
+    </div>
+    <div
+      class="row-md-3 row-sm-6 btn-group mb-2"
+      role="group"
+      aria-label="Fourth group"
+    >
+      <button type="button" class="btn btn-success-custom" id="beverages">
+        Beverages
+      </button>
+    </div>
+  </div>
+  <div class="row text-center" id="menuItemsPage">
+    <!-- Menu items will be loaded dynamically here -->
+  </div>
+</div>
+<script>
+  // Calling function to get menu items based on user interaction
+  $("#main_courses").click(function () {
+    MenuItemsService.getMenuItems("Main Courses");
+  });
+  $("#side_dishes").click(function () {
+    MenuItemsService.getMenuItems("Side Dishes");
+  });
+  $("#desserts").click(function () {
+    MenuItemsService.getMenuItems("Desserts");
+  });
+  $("#beverages").click(function () {
+    MenuItemsService.getMenuItems("Beverages");
+  });
+
+  // Call the function to get limited menu items
+  MenuItemsService.getLimitedMenuItems();
+</script>

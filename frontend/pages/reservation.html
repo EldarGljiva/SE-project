@@ -1,0 +1,70 @@
+<!--Reservation page content-->
+<div
+  class="container d-flex justify-content-center align-items-center min-vh-100"
+>
+  <div class="row border rounded-5 p-3 bg-light shadow box-area-reservation">
+    <div
+      class="col-md-6 left-box d-flex justify-content-center align-items-center"
+    >
+      <div class="featured-image">
+        <img
+          src="assets/images/reservation.png"
+          alt="reservation"
+          class="img-fluid rounded-5"
+          width="350px"
+        />
+      </div>
+    </div>
+    <!--Right box-->
+    <div class="col-md-6 right-box">
+      <!-- Reservation Form-->
+      <form
+        class="row align-items-center"
+        id="reservationForm"
+        action="#"
+        method="POST"
+      >
+        <div class="header-text">
+          <p style="font-size: 24px; color: #000; font-weight: bold">
+            Table Reservation
+          </p>
+        </div>
+        <!--Email-->
+        <div class="input-group mb-3">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Email address"
+          />
+        </div>
+        <!-- Number of Table -->
+        <div class="input-group mb-3">
+          <label class="input-group-text" for="table">Table Number</label>
+          <select class="form-select" id="table" name="table"></select>
+        </div>
+        <!--Date and Time-->
+        <div class="input-group mb-3">
+          <input
+            type="datetime-local"
+            class="form-control"
+            id="reservationDate"
+            name="reservationDate"
+          />
+        </div>
+        <!--Button-->
+        <div class="input-group mb-3">
+          <button type="submit" class="btn btn-success w-100 fs-6">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  reservationService.getAllTables();
+  reservationService.setMinDate();
+  reservationService.initFormValidation();
+</script>
