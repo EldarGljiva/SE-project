@@ -1,0 +1,14 @@
+{
+  "url": {
+    "base_page": "http://localhost/restaurant-reservation-system/frontend/index.html#login"
+  },
+  "data": {
+    "fName": "Test",
+    "lName": "Test",
+    "email": "test.test@gmail.com",
+    "loginEmail": "eldar@gmail.com",
+    "loginPassword": "eldar123",
+    "phone": "38761548255",
+    "password": "test1234_test1234"
+  }
+}

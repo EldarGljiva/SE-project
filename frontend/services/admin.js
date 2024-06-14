@@ -1,42 +1,57 @@
 var adminService = {
   getMenuItems: function () {
-    $.get("../rest/menuitems", (menuitems) => {
-      let output = "";
-      if (menuitems) {
-        for (let i = 0; i < menuitems.length; i++) {
-          let item = menuitems[i];
-          output +=
-            '<div class="col-lg-4 col-md-4 mb-2">' +
-            '<div class="card">' +
-            '<img src="' +
-            item.image_url +
-            '" class="card-img-top img-fluid" alt="food"/>' +
-            '<div class="card-body">' +
-            '<h5 class="card-title">' +
-            item.foodName +
-            "</h5>" +
-            '<p class="card-text">' +
-            item.description +
-            "</p>" +
-            '<button type="button" class="btn btn-primary btn-sm edit-btn" data-bs-toggle="modal" data-bs-target="#editMenuItemModal" style = "margin-right:5px" onclick="populateEditForm(' +
-            item.id +
-            ')" data-id="' +
-            item.id +
-            '">Edit</button>' +
-            '<button type="button" class="btn btn-danger btn-sm delete-btn" data-bs-toggle="modal" data-bs-target="#deleteMenuItemModal" onclick="openConfirmationDialog(' +
-            item.id +
-            ')" data-id="' +
-            item.id +
-            '">Delete</button>' +
-            "</div>" +
-            "</div>" +
-            "</div>";
+    $.ajax({
+      url: "../rest/menuitems",
+      type: "GET",
+      headers: {
+        Authentication: localStorage.getItem("token"),
+      },
+      success: function (menuitems) {
+        let output = "";
+        if (menuitems && menuitems.length > 0) {
+          for (let i = 0; i < menuitems.length; i++) {
+            let item = menuitems[i];
+            output +=
+              '<div class="col-lg-4 col-md-4 mb-2">' +
+              '<div class="card">' +
+              '<img src="' +
+              item.image_url +
+              '" class="card-img-top img-fluid custom-img" alt="food"/>' +
+              '<div class="card-body">' +
+              '<h5 class="card-title">' +
+              item.foodName +
+              "</h5>" +
+              '<p class="card-text">' +
+              '<span style="color: green;">$' +
+              item.foodPrice +
+              "</span>" +
+              "</p>" +
+              '<p class="card-text">' +
+              item.description +
+              "</p>" +
+              '<button type="button" class="btn btn-primary btn-sm edit-btn" data-bs-toggle="modal" data-bs-target="#editMenuItemModal" style="margin-right:5px" onclick="populateEditForm(' +
+              item.id +
+              ')" data-id="' +
+              item.id +
+              '">Edit</button>' +
+              '<button type="button" class="btn btn-danger btn-sm delete-btn" data-bs-toggle="modal" data-bs-target="#deleteMenuItemModal" onclick="openConfirmationDialog(' +
+              item.id +
+              ')" data-id="' +
+              item.id +
+              '">Delete</button>' +
+              "</div>" +
+              "</div>" +
+              "</div>";
+          }
+        } else {
+          output = "No menu items found.";
         }
-      } else {
-        output = "No menu items found.";
-      }
-      console.log("data: ", menuitems);
-      $("#adminMenuItems").html(output);
+        console.log("data: ", menuitems);
+        $("#adminMenuItems").html(output);
+      },
+      error: function (xhr, status, error) {
+        // handle error
+      },
     });
   },
 
@@ -47,6 +62,9 @@ var adminService = {
     $.ajax({
       url: "../rest/menuitems/" + itemId,
       type: "DELETE",
+      headers: {
+        Authentication: localStorage.getItem("token"),
+      },
       success: function () {
         toastr.success("Menu Item Deleted Successfully");
         console.log("Menu Item Deleted Successfully");
@@ -66,6 +84,9 @@ var adminService = {
     $.ajax({
       url: "../rest/reservations/" + itemId,
       type: "DELETE",
+      headers: {
+        Authentication: localStorage.getItem("token"),
+      },
       success: function () {
         toastr.success("Reservation Deleted Successfully");
         console.log("Reservation Deleted Successfully");
@@ -99,6 +120,9 @@ var adminService = {
       type: "PUT",
       contentType: "application/json",
       data: JSON.stringify(updatedMenuItem),
+      headers: {
+        Authentication: localStorage.getItem("token"),
+      },
       success: function () {
         toastr.success("Menu Item Updated Successfully");
         console.log("Menu Item Updated Successfully");
@@ -125,6 +149,9 @@ var adminService = {
       type: "PUT",
       contentType: "application/json",
       data: JSON.stringify(updatedReservation),
+      headers: {
+        Authentication: localStorage.getItem("token"),
+      },
       success: function () {
         toastr.success("Reservation Updated Successfully");
         console.log("Reservation Updated Successfully");
@@ -139,45 +166,56 @@ var adminService = {
   },
   // Display existing reservations
   getReservationsAdmin: function () {
-    $.get("../rest/reservations", (data) => {
-      let html = "";
-      if (data) {
-        for (let i = 0; i < data.length; i++) {
-          let item = data[i];
-          html +=
-            '<div class="booking-box col-lg-3 col-md-4 col-sm-6 col-xs-6 mb-2">' +
-            '<div class="card">' +
-            '<div class="card-body">' +
-            '<h5 class="card-title"> Customer ID: ' +
-            item.customerId +
-            "</h5>" +
-            '<p class="card-text"> Table ID: ' +
-            item.tableId +
-            "</p>" +
-            '<p class="card-text"> <span style="color: green; font-weight: bold; display:block">Reservation Date</span> ' +
-            item.reservationDate +
-            "</p>" +
-            '<button type="button" class="btn btn-primary btn-sm edit-btn" data-bs-toggle="modal" data-bs-target="#editReservationModal" style = "margin-right:5px"" onclick="populateEditReservationForm(' +
-            item.id +
-            ')" data-id="' +
-            item.id +
-            '">Edit</button>' +
-            '<button type="button" class="btn btn-danger btn-sm delete-btn" data-bs-toggle="modal" data-bs-target="#deleteReservationModal" onclick="openConfirmationReservationDialog(' +
-            item.id +
-            ')" data-id="' +
-            item.id +
-            '">Delete</button>' +
-            "</div>" +
-            "</div>" +
-            "</div>";
+    $.ajax({
+      url: "../rest/reservations",
+      type: "GET",
+      headers: {
+        Authentication: localStorage.getItem("token"),
+      },
+      success: function (data) {
+        let html = "";
+        if (data && data.length > 0) {
+          for (let i = 0; i < data.length; i++) {
+            let item = data[i];
+            html +=
+              '<div class="booking-box col-lg-3 col-md-4 col-sm-6 col-xs-6 mb-2">' +
+              '<div class="card">' +
+              '<div class="card-body">' +
+              '<h5 class="card-title"> Customer ID: ' +
+              item.customerId +
+              "</h5>" +
+              '<p class="card-text"> Table ID: ' +
+              item.tableId +
+              "</p>" +
+              '<p class="card-text"> <span style="color: green; font-weight: bold; display:block">Reservation Date</span> ' +
+              item.reservationDate +
+              "</p>" +
+              '<button type="button" class="btn btn-primary btn-sm edit-btn" data-bs-toggle="modal" data-bs-target="#editReservationModal" style="margin-right:5px" onclick="populateEditReservationForm(' +
+              item.id +
+              ')" data-id="' +
+              item.id +
+              '">Edit</button>' +
+              '<button type="button" class="btn btn-danger btn-sm delete-btn" data-bs-toggle="modal" data-bs-target="#deleteReservationModal" onclick="openConfirmationReservationDialog(' +
+              item.id +
+              ')" data-id="' +
+              item.id +
+              '">Delete</button>' +
+              "</div>" +
+              "</div>" +
+              "</div>";
+          }
+        } else {
+          html = "No reservations found.";
         }
-      } else {
-        html = "No reservations found.";
-      }
-      console.log("data: ", data);
-      $("#reservationsContentAdmin").html(html);
+        console.log("data: ", data);
+        $("#reservationsContentAdmin").html(html);
+      },
+      error: function (xhr, status, error) {
+        // handle error
+      },
     });
   },
+
   init: function () {
     $("#addMenuItemForm").validate({
       rules: {
@@ -239,6 +277,9 @@ var adminService = {
           type: "POST",
           url: "../rest/menuitems",
           data: data,
+          headers: {
+            Authentication: localStorage.getItem("token"),
+          },
           success: function (response) {
             console.log("ajax response: " + response);
             $("body").unblock();

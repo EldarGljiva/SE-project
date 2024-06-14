@@ -5,6 +5,82 @@
     <!-- Reservations will be loaded dynamically here -->
   </div>
 </div>
+
+<!-- Modal to edit reservation from db -->
+<div class="modal fade" id="editReservationModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="editReservationForm">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Reservation</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input id="edit_reservation_id" name="edit_reservation_id" hidden />
+            <label for="edit_reservationDate">Reservation Date:</label>
+            <input
+              type="datetime-local"
+              class="form-control"
+              placeholder="Date and Time"
+              id="edit_reservationDate"
+              name="edit_reservationDate"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteReservationModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteConfirmationModalLabel">
+          Reservation Confirmation
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to cancel your reservation?
+        <input id="delete_reservation_id" name="delete_reservation_id" hidden />
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Go back
+        </button>
+        <button type="button" class="btn btn-danger">Cancel Reservation</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 <script>
   reservationService.getReservations();
+  $("#editReservationForm").submit(function (event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    reservationService.editReservation();
+  });
+  $("#deleteReservationModal").on("click", ".btn-danger", function () {
+    reservationService.deleteReservation();
+  });
 </script>

@@ -18,12 +18,7 @@
     <!--Right box-->
     <div class="col-md-6 right-box">
       <!-- Reservation Form-->
-      <form
-        class="row align-items-center"
-        id="reservationForm"
-        action="#"
-        method="POST"
-      >
+      <form class="row align-items-center" id="reservationForm" method="POST">
         <div class="header-text">
           <p style="font-size: 24px; color: #000; font-weight: bold">
             Table Reservation
@@ -37,6 +32,7 @@
             name="email"
             class="form-control"
             placeholder="Email address"
+            autocomplete="off"
           />
         </div>
         <!-- Number of Table -->
@@ -55,8 +51,12 @@
         </div>
         <!--Button-->
         <div class="input-group mb-3">
-          <button type="submit" class="btn btn-success w-100 fs-6">
-            Submit
+          <button
+            id="submitReservation"
+            type="submit"
+            class="btn btn-success w-100 fs-6"
+          >
+            Continue
           </button>
         </div>
       </form>

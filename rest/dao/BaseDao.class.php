@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . "/../Config.class.php";
+require __DIR__ . "/../../config.php";
 
 class BaseDao
 {
@@ -10,29 +10,23 @@ class BaseDao
     // Class constructor used to establish connection to db
     public function __construct($table_name)
     {
+        $this->table_name = $table_name;
         try {
-            $this->table_name = $table_name;
-            $servername = Config::DB_HOST();
-            $username = Config::DB_USERNAME();
-            $password = Config::DB_PASSWORD();
-            $schema = Config::DB_SCHEME();
-
-            $this->conn = new PDO("mysql:host=$servername;dbname=$schema", $username, $password);
-            // set the PDO error mode to exception
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Connected successfully \n";
-
-            $stmt = $this->conn->prepare("SELECT * FROM " . $this->table_name);
-            $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            print_r($result);
+            $this->conn = new PDO(
+                "mysql:host=" . Config::DB_HOST() . ";port=" . Config::DB_PORT() . ";dbname=" . Config::DB_NAME(),
+                Config::DB_USERNAME(),
+                Config::DB_PASSWORD(),
+                [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                ]
+            );
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
         }
     }
 
-    // Method to get database connection
+
     protected function getConnection()
     {
         return $this->conn;

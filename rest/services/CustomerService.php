@@ -5,15 +5,22 @@ require __DIR__ . '/../dao/CustomersDao.class.php';
 
 class CustomerService extends BaseService
 {
+    private $customersDao;
+
     public function __construct()
     {
-        parent::__construct(new CustomersDao);
+        $this->customersDao = new CustomersDao();
+        parent::__construct($this->customersDao);
     }
-
 
     public function add($entity)
     {
-        //$entity['password'] = md5($entity['password']);
         return parent::add($entity);
+    }
+
+    // Add the getByEmail method
+    public function getByEmail($email)
+    {
+        return $this->customersDao->getByEmail($email);
     }
 }
