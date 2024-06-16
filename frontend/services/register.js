@@ -11,7 +11,7 @@ var registerService = {
         },
         password: {
           required: true,
-          minlength: 6,
+          minlength: 8,
         },
         phone: { required: true, digits: true },
       },
