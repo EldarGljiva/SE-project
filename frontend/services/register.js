@@ -27,7 +27,7 @@ var registerService = {
         email: "Please enter a valid email address",
         password: {
           required: "Please enter a password",
-          minlength: "Password must be at least 6 characters long",
+          minlength: "Password must be at least 8 characters long",
         },
         phone: {
           required: "Please enter your phone number",

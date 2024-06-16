@@ -8,14 +8,14 @@ var loginService = {
         },
         password: {
           required: true,
-          minlength: 6,
+          minlength: 8,
         },
       },
       messages: {
         email: "Please enter a valid email address",
         password: {
           required: "Please enter a password",
-          minlength: "Password must be at least 6 characters long",
+          minlength: "Password must be at least 8 characters long",
         },
       },
       submitHandler: function (form, event) {
